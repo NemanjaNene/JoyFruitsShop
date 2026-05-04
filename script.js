@@ -311,12 +311,13 @@ const frame = (now) => {
   lastNow = now;
 
   velocity *= Math.pow(dynamicFriction(velocity), dt * 60);
-  if (Math.abs(velocity) < 0.01) velocity = 0;
+  if (Math.abs(velocity) < 1) velocity = 0;
 
-  if (Math.abs(velocity) > 0.2) {
+  if (Math.abs(velocity) > 1) {
     const next = Math.max(0, Math.min(scrollY + velocity * ease, maxScroll));
-    window.scrollTo(0, next);
-    tgt = next / maxScroll;
+    const rounded = Math.round(next);
+    window.scrollTo(0, rounded);
+    tgt = rounded / maxScroll;
   }
 
   smooth += (tgt - smooth) * (1 - Math.exp(-dt * 8));
