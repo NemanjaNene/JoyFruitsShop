@@ -953,6 +953,131 @@
 
     .cta-row {
       margin-block-start: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .price-tag {
+      margin-block: 1rem 0.15rem;
+    }
+
+    .price-amount {
+      font-size: clamp(1.3rem, 5vw, 1.8rem);
+    }
+
+    .cart-drawer {
+      width: min(340px, 88vw);
+    }
+  }
+
+  @media (width <= 30em) {
+    section {
+      min-height: 140vh;
+      padding: 0 1rem 3rem;
+    }
+
+    #s0 {
+      padding: 3rem 1rem;
+    }
+
+    :is(.text-card, .text-card.right, .text-card.center) {
+      max-width: 100%;
+      padding: 1.25rem 1rem;
+      border-left: none;
+      border-right: none;
+      border-top: var(--hairline) solid var(--card-border);
+    }
+
+    .text-card.right {
+      text-align: left;
+
+      .h-line {
+        transform-origin: left;
+        margin-inline-start: 0;
+      }
+
+      .cta-row {
+        justify-content: flex-start;
+      }
+
+      .stat-row {
+        justify-content: flex-start !important;
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 12vw, 3.5rem);
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 8vw, 2.8rem);
+    }
+
+    .body-text {
+      font-size: 0.72rem;
+      line-height: 1.5;
+    }
+
+    .tag {
+      font-size: 0.55rem;
+    }
+
+    .stat-row {
+      gap: 1.25rem;
+    }
+
+    .stat-num {
+      font-size: 1.6rem;
+    }
+
+    .cta, .cta-back, .buy-btn {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.55rem;
+    }
+
+    .price-tag {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .price-amount {
+      font-size: 1.3rem;
+    }
+
+    .cart-drawer {
+      width: 100vw;
+      border-left: none;
+    }
+
+    .cart-header h3 {
+      font-size: 1.3rem;
+    }
+
+    .cart-item {
+      padding: 0.75rem 1rem;
+    }
+
+    .cart-checkout-btn {
+      font-size: 1rem;
+      padding: 0.75rem;
+    }
+
+    #hud {
+      top: 0.75rem;
+      right: 0.75rem;
+    }
+
+    #face_caption {
+      bottom: 0.75rem;
+    }
+
+    #cart_btn {
+      top: 0.75rem;
+      left: 0.75rem;
+    }
+
+    #theme_toggle {
+      bottom: 0.75rem;
+      left: 0.75rem;
     }
   }
 }
