@@ -232,18 +232,18 @@ window.addEventListener("resize", () => {
   smooth = tgt;
 });
 
-let resizePending = false;
+let resizeTimer = null;
 const ro = new ResizeObserver(() => {
-  if (resizePending) return;
-  resizePending = true;
-  requestAnimationFrame(() => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    const h = document.documentElement.scrollHeight;
+    const vh = innerHeight;
+    if (h === lastScrollHeight && vh === lastInnerHeight) return;
     resize();
     tgt = maxScroll > 0 ? scrollY / maxScroll : 0;
-    smooth = tgt;
-    resizePending = false;
-  });
+  }, 300);
 });
-ro.observe(document.documentElement);
+ro.observe(document.getElementById("scroll_container"));
 
 window.addEventListener(
   "scroll",
@@ -297,6 +297,7 @@ const io = new IntersectionObserver(
 revealEls.forEach((el) => io.observe(el));
 
 let lastNow = performance.now();
+let lastSmooth = -1;
 
 const frame = (now) => {
   requestAnimationFrame(frame);
@@ -321,9 +322,14 @@ const frame = (now) => {
   smooth += (tgt - smooth) * (1 - Math.exp(-dt * 8));
   smooth = Math.max(0, Math.min(1, smooth));
 
-  updateHUD(smooth);
-  checkImageSwaps(smooth);
-  setCubeTransform(smooth);
+  if (Math.abs(smooth - tgt) < 0.0001) smooth = tgt;
+
+  if (smooth !== lastSmooth) {
+    lastSmooth = smooth;
+    updateHUD(smooth);
+    checkImageSwaps(smooth);
+    setCubeTransform(smooth);
+  }
 };
 
 requestAnimationFrame(frame);

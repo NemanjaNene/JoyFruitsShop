@@ -164,9 +164,9 @@
   #hud {
     position: fixed;
     top: var(--ui-inset);
-    right: calc(var(--ui-inset) + 3.5rem);
+    left: var(--ui-inset);
     z-index: var(--z-ui);
-    text-align: right;
+    text-align: left;
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     color: var(--muted);
@@ -177,7 +177,7 @@
       height: var(--hairline);
       background: var(--muted);
       margin-block-start: 0.5rem;
-      margin-inline-start: auto;
+      margin-inline-start: 0;
       position: relative;
       overflow: hidden;
     }
@@ -1338,7 +1338,7 @@
   @media (width <= 56.25em) {
     #hud {
       top: 1rem;
-      right: calc(1rem + 3.5rem);
+      left: 1.25rem;
     }
 
     #scene_strip {
@@ -1498,7 +1498,7 @@
 
     #hud {
       top: 0.75rem;
-      right: calc(0.75rem + 3.25rem);
+      left: 0.75rem;
     }
 
     #face_caption {
