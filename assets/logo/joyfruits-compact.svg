@@ -1,0 +1,12 @@
+<svg width="160" height="50" viewBox="0 0 160 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Compact JoyFruits Logo -->
+  <text x="2" y="36" 
+        font-family="serif" 
+        font-size="38" 
+        font-weight="700" 
+        fill="#1a1816" 
+        letter-spacing="-0.8">
+    <tspan style="font-weight: 400;">Jóy</tspan><tspan style="font-weight: 700;">Fruits</tspan>
+  </text>
+</svg>
+

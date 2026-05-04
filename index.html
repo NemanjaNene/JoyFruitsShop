@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JoyFruits — Caribbean Luxury Brandy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="scene">
+  <div id="cube">
+    <div class="face" data-face="top" data-i="0"><span class="face-ph">TOP</span></div>
+    <div class="face" data-face="front" data-i="1"><span class="face-ph">FRONT</span></div>
+    <div class="face" data-face="right" data-i="2"><span class="face-ph">RIGHT</span></div>
+    <div class="face" data-face="back" data-i="3"><span class="face-ph">BACK</span></div>
+    <div class="face" data-face="left" data-i="4"><span class="face-ph">LEFT</span></div>
+    <div class="face" data-face="bottom" data-i="5"><span class="face-ph">BOTTOM</span></div>
+  </div>
+</div>
+
+<div id="hud">
+  <div id="hud_pct">000%</div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="prog_fill"></div>
+  </div>
+  <div class="scene-label" id="scene_name">JOYFRUITS</div>
+</div>
+
+<button id="cart_btn" aria-label="Shopping cart">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <path d="M16 10a4 4 0 0 1-8 0"/>
+  </svg>
+  <span id="cart_count" data-empty="true">0</span>
+</button>
+
+<button id="theme_toggle" aria-label="Toggle light/dark mode">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+  </svg>
+</button>
+
+<div id="scene_strip">
+  <a href="#s0" class="scene-dot active"></a>
+  <a href="#s1" class="scene-dot"></a>
+  <a href="#s2" class="scene-dot"></a>
+  <a href="#s3" class="scene-dot"></a>
+  <a href="#s4" class="scene-dot"></a>
+  <a href="#s5" class="scene-dot"></a>
+</div>
+
+<div id="face_caption">
+  <div id="face_caption_num">01</div>
+  <div id="face_caption_name">JOYFRUITS</div>
+</div>
+
+<div id="scroll_container">
+
+  <section id="s0">
+    <div class="text-card">
+      <div class="tag">JoyFruits — Caribbean Luxury Brandy</div>
+      <h1>JOY<br>FRUITS</h1>
+      <p class="body-text">
+        Ultra-premium single-fruit brandy.
+        Handcrafted from sun-ripened Caribbean mangoes.
+        An exclusive liquid treasure.
+        Small-batch distilled using traditional copper stills.
+        Natural color, crystal clarity, unforgettable character.
+      </p>
+      <div class="cta-row">
+        <a class="cta" href="#s1">
+          Discover
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 6h10M6 1l5 5-5 5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="s1">
+    <div class="text-card right">
+      <div class="h-line"></div>
+      <div class="tag">01 — Mango Brandy</div>
+      <h2>MANGO</h2>
+      <p class="body-text">
+        A smooth mango brandy crafted from ripe
+        Caribbean mangoes, delivering lush tropical
+        sweetness, full-bodied texture, and a refined,
+        elegant finish. Sun-ripened Keitt and Kent
+        mangoes picked at peak ripeness.
+      </p>
+      <div class="stat-row" style="justify-content: flex-end">
+        <div class="stat">
+          <span class="stat-num">40%</span>
+          <span class="stat-label">ABV</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">700</span>
+          <span class="stat-label">ML</span>
+        </div>
+      </div>
+      <div class="price-tag">
+        <span class="price-amount">€89</span>
+        <span class="price-note">per bottle · 700 ml</span>
+      </div>
+      <div class="cta-row">
+        <a class="cta-back" href="#s0">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11 6H1M6 11L1 6l5-5" />
+          </svg>
+          Back
+        </a>
+        <button class="cta buy-btn" data-product="mango" data-name="Mango Brandy" data-price="89">
+          Add to Cart
+        </button>
+        <a class="cta" href="#s2">
+          Next
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 6h10M6 1l5 5-5 5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="text-card">
+      <div class="h-line"></div>
+      <div class="tag">02 — Passion Fruit Brandy</div>
+      <h2>PASSION<br>FRUIT</h2>
+      <p class="body-text">
+        A lively passion fruit brandy showcasing vibrant
+        tropical aromas, refreshing natural acidity, and
+        a clean, crisp finish. Bright Caribbean sunshine
+        captured in every sip. 100% natural,
+        zero additives.
+      </p>
+      <div class="stat-row">
+        <div class="stat">
+          <span class="stat-num">40%</span>
+          <span class="stat-label">ABV</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">700</span>
+          <span class="stat-label">ML</span>
+        </div>
+      </div>
+      <div class="price-tag">
+        <span class="price-amount">€89</span>
+        <span class="price-note">per bottle · 700 ml</span>
+      </div>
+      <div class="cta-row">
+        <a class="cta-back" href="#s1">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11 6H1M6 11L1 6l5-5" />
+          </svg>
+          Back
+        </a>
+        <button class="cta buy-btn" data-product="passion-fruit" data-name="Passion Fruit Brandy" data-price="89">
+          Add to Cart
+        </button>
+        <a class="cta" href="#s3">
+          Next
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 6h10M6 1l5 5-5 5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="text-card right">
+      <div class="h-line"></div>
+      <div class="tag">03 — Herbal Mango Brandy</div>
+      <h2>HERBAL<br>MANGO</h2>
+      <p class="body-text">
+        A refined mango brandy infused with carefully
+        selected medicinal herbs, creating a complex,
+        layered profile where tropical fruit richness
+        meets elegant herbal depth. Double distilled
+        in traditional copper alembic stills.
+      </p>
+      <div class="stat-row" style="justify-content: flex-end">
+        <div class="stat">
+          <span class="stat-num">40%</span>
+          <span class="stat-label">ABV</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">700</span>
+          <span class="stat-label">ML</span>
+        </div>
+      </div>
+      <div class="price-tag">
+        <span class="price-amount">€95</span>
+        <span class="price-note">per bottle · 700 ml</span>
+      </div>
+      <div class="cta-row">
+        <a class="cta-back" href="#s2">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11 6H1M6 11L1 6l5-5" />
+          </svg>
+          Back
+        </a>
+        <button class="cta buy-btn" data-product="herbal-mango" data-name="Herbal Mango Brandy" data-price="95">
+          Add to Cart
+        </button>
+        <a class="cta" href="#s4">
+          Next
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 6h10M6 1l5 5-5 5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="text-card">
+      <div class="h-line"></div>
+      <div class="tag">04 — The Craft</div>
+      <h2>FROM<br>GROVE<br>TO GLASS</h2>
+      <p class="body-text">
+        Handpicked from family groves outside Punta Cana.
+        Fresh fruit ferments slowly over 10–14 days.
+        Double distilled in traditional copper alembic stills.
+        Only the purest heart of the spirit survives.
+        Gently proofed for balance and smoothness.
+      </p>
+      <div class="cta-row">
+        <a class="cta-back" href="#s3">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11 6H1M6 11L1 6l5-5" />
+          </svg>
+          Back
+        </a>
+        <a class="cta" href="#s5">
+          Next
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 6h10M6 1l5 5-5 5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="s5">
+    <div class="text-card right">
+      <div class="h-line"></div>
+      <div class="tag">05 — The Journey</div>
+      <h2>CARIBBEAN<br>TO EUROPE</h2>
+      <p class="body-text">
+        Following the historic trade winds, each shipment
+        traces the legendary Dominican-to-Europe passage.
+        Limited European distribution.
+        Each bottle is individually crafted with care.
+        Secure your allocation today.
+      </p>
+      <div class="stat-row" style="justify-content: flex-end">
+        <div class="stat">
+          <span class="stat-num">5000+</span>
+          <span class="stat-label">Bottles</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">15+</span>
+          <span class="stat-label">Countries</span>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="cta-back" href="#s4">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11 6H1M6 11L1 6l5-5" />
+          </svg>
+          Back
+        </a>
+        <a class="cta" href="#s0">
+          Back to top
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 6h10M6 1l5 5-5 5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="cart_overlay" class="cart-overlay"></div>
+<aside id="cart_drawer" class="cart-drawer">
+  <header class="cart-header">
+    <h3>Your Cart</h3>
+    <button id="cart_close" class="cart-close" aria-label="Close cart">&times;</button>
+  </header>
+  <div id="cart_items" class="cart-items"></div>
+  <div id="cart_empty" class="cart-empty">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </svg>
+    <p>Your cart is empty</p>
+  </div>
+  <footer id="cart_footer" class="cart-footer">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart_total" class="cart-total-price">€0</span>
+    </div>
+    <button id="cart_checkout" class="cart-checkout-btn">Checkout</button>
+  </footer>
+</aside>
+
+<div id="credit">
+  <a href="https://joyfruitspremium.com/en/" target="_blank" rel="noopener">JoyFruits Premium</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
