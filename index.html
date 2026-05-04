@@ -111,21 +111,14 @@
         <span class="price-note">per bottle · 700 ml</span>
       </div>
       <div class="cta-row">
-        <a class="cta-back" href="#s0">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M11 6H1M6 11L1 6l5-5" />
+        <button class="buy-btn buy-btn--large" data-product="mango" data-name="Mango Brandy" data-price="89">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
-          Back
-        </a>
-        <button class="cta buy-btn" data-product="mango" data-name="Mango Brandy" data-price="89">
           Add to Cart
         </button>
-        <a class="cta" href="#s2">
-          Next
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M1 6h10M6 1l5 5-5 5" />
-          </svg>
-        </a>
       </div>
     </div>
   </section>
@@ -157,21 +150,14 @@
         <span class="price-note">per bottle · 700 ml</span>
       </div>
       <div class="cta-row">
-        <a class="cta-back" href="#s1">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M11 6H1M6 11L1 6l5-5" />
+        <button class="buy-btn buy-btn--large" data-product="passion-fruit" data-name="Passion Fruit Brandy" data-price="89">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
-          Back
-        </a>
-        <button class="cta buy-btn" data-product="passion-fruit" data-name="Passion Fruit Brandy" data-price="89">
           Add to Cart
         </button>
-        <a class="cta" href="#s3">
-          Next
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M1 6h10M6 1l5 5-5 5" />
-          </svg>
-        </a>
       </div>
     </div>
   </section>
@@ -203,21 +189,14 @@
         <span class="price-note">per bottle · 700 ml</span>
       </div>
       <div class="cta-row">
-        <a class="cta-back" href="#s2">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M11 6H1M6 11L1 6l5-5" />
+        <button class="buy-btn buy-btn--large" data-product="herbal-mango" data-name="Herbal Mango Brandy" data-price="95">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
-          Back
-        </a>
-        <button class="cta buy-btn" data-product="herbal-mango" data-name="Herbal Mango Brandy" data-price="95">
           Add to Cart
         </button>
-        <a class="cta" href="#s4">
-          Next
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M1 6h10M6 1l5 5-5 5" />
-          </svg>
-        </a>
       </div>
     </div>
   </section>
@@ -315,6 +294,111 @@
     <button id="cart_checkout" class="cart-checkout-btn">Checkout</button>
   </footer>
 </aside>
+
+<div id="checkout_overlay" class="checkout-overlay">
+  <div class="checkout-page">
+    <header class="checkout-hdr">
+      <h2>Checkout</h2>
+      <button id="checkout_close" class="cart-close" aria-label="Close checkout">&times;</button>
+    </header>
+
+    <div id="checkout_summary" class="checkout-summary"></div>
+
+    <div class="checkout-method-pick">
+      <h4>Payment Method</h4>
+      <div class="method-btns">
+        <button class="method-btn active" data-method="cod">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="1" y="4" width="22" height="16" rx="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+          </svg>
+          Cash on Delivery
+        </button>
+        <button class="method-btn" data-method="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="1" y="4" width="22" height="16" rx="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+            <circle cx="18" cy="16" r="1"/>
+          </svg>
+          Credit / Debit Card
+        </button>
+      </div>
+    </div>
+
+    <form id="checkout_form" class="checkout-form" autocomplete="on">
+      <fieldset class="checkout-fieldset">
+        <legend>Personal Info</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="co_fname">First Name</label>
+            <input type="text" id="co_fname" name="fname" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="co_lname">Last Name</label>
+            <input type="text" id="co_lname" name="lname" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="field">
+          <label for="co_email">Email</label>
+          <input type="email" id="co_email" name="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="co_phone">Phone</label>
+          <input type="tel" id="co_phone" name="phone" required autocomplete="tel">
+        </div>
+      </fieldset>
+
+      <fieldset class="checkout-fieldset">
+        <legend>Delivery Address</legend>
+        <div class="field">
+          <label for="co_address">Street Address</label>
+          <input type="text" id="co_address" name="address" required autocomplete="street-address">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="co_city">City</label>
+            <input type="text" id="co_city" name="city" required autocomplete="address-level2">
+          </div>
+          <div class="field">
+            <label for="co_zip">Postal Code</label>
+            <input type="text" id="co_zip" name="zip" required autocomplete="postal-code">
+          </div>
+        </div>
+        <div class="field">
+          <label for="co_country">Country</label>
+          <input type="text" id="co_country" name="country" required autocomplete="country-name">
+        </div>
+      </fieldset>
+
+      <fieldset id="card_fieldset" class="checkout-fieldset" hidden>
+        <legend>Card Details</legend>
+        <div class="field">
+          <label for="co_cardnum">Card Number</label>
+          <input type="text" id="co_cardnum" name="cardnum" placeholder="1234 5678 9012 3456" inputmode="numeric" autocomplete="cc-number">
+        </div>
+        <div class="field-row field-row--3">
+          <div class="field">
+            <label for="co_exp">Expiry</label>
+            <input type="text" id="co_exp" name="exp" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp">
+          </div>
+          <div class="field">
+            <label for="co_cvc">CVC</label>
+            <input type="text" id="co_cvc" name="cvc" placeholder="123" inputmode="numeric" autocomplete="cc-csc">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="checkout-total-bar">
+        <span>Order Total</span>
+        <span id="checkout_total" class="cart-total-price">€0</span>
+      </div>
+
+      <button type="submit" class="checkout-submit-btn" id="checkout_submit">
+        Confirm Order
+      </button>
+    </form>
+  </div>
+</div>
 
 <div id="credit">
   <a href="https://joyfruitspremium.com/en/" target="_blank" rel="noopener">JoyFruits Premium</a>

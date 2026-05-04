@@ -494,10 +494,87 @@ cartItemsEl.addEventListener("click", (e) => {
   renderCart();
 });
 
-document.getElementById("cart_checkout").addEventListener("click", () => {
-  if (Object.keys(cart).length === 0) return;
+/* ── Checkout ── */
+
+const checkoutOverlay = document.getElementById("checkout_overlay");
+const checkoutClose = document.getElementById("checkout_close");
+const checkoutSummary = document.getElementById("checkout_summary");
+const checkoutTotal = document.getElementById("checkout_total");
+const checkoutForm = document.getElementById("checkout_form");
+const cardFieldset = document.getElementById("card_fieldset");
+let paymentMethod = "cod";
+
+function openCheckout() {
+  const items = Object.entries(cart);
+  if (items.length === 0) return;
+
+  checkoutSummary.innerHTML = items
+    .map(
+      ([, item]) =>
+        `<div class="checkout-summary-item">
+          <span class="checkout-summary-name">${item.name} × ${item.qty}</span>
+          <span class="checkout-summary-detail">€${item.price * item.qty}</span>
+        </div>`
+    )
+    .join("");
+
+  const total = items.reduce((s, [, i]) => s + i.price * i.qty, 0);
+  checkoutTotal.textContent = `€${total}`;
+
+  cardFieldset.hidden = paymentMethod !== "card";
+  cardFieldset.querySelectorAll("input").forEach((inp) => {
+    inp.required = paymentMethod === "card";
+  });
+
   closeCart();
-  alert("Thank you! Your order has been placed.");
-  Object.keys(cart).forEach((k) => delete cart[k]);
-  updateCartCount();
+  checkoutOverlay.classList.add("open");
+  checkoutOverlay.scrollTop = 0;
+}
+
+function closeCheckout() {
+  checkoutOverlay.classList.remove("open");
+}
+
+document.getElementById("cart_checkout").addEventListener("click", openCheckout);
+checkoutClose.addEventListener("click", closeCheckout);
+
+document.querySelectorAll(".method-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".method-btn").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    paymentMethod = btn.dataset.method;
+
+    const isCard = paymentMethod === "card";
+    cardFieldset.hidden = !isCard;
+    cardFieldset.querySelectorAll("input").forEach((inp) => {
+      inp.required = isCard;
+    });
+  });
+});
+
+checkoutForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const submitBtn = document.getElementById("checkout_submit");
+  submitBtn.textContent = "Processing…";
+  submitBtn.disabled = true;
+
+  setTimeout(() => {
+    closeCheckout();
+    Object.keys(cart).forEach((k) => delete cart[k]);
+    updateCartCount();
+    checkoutForm.reset();
+    submitBtn.textContent = "Confirm Order";
+    submitBtn.disabled = false;
+
+    const toast = document.createElement("div");
+    toast.className = "order-toast";
+    toast.textContent = "Order confirmed! Thank you.";
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add("show"));
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.remove(), 400);
+    }, 3000);
+  }, 1200);
 });
