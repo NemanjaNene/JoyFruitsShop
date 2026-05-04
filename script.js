@@ -257,6 +257,10 @@ window.addEventListener(
 window.addEventListener(
   "wheel",
   (e) => {
+    const overlay = document.getElementById("checkout_overlay");
+    if (overlay && overlay.classList.contains("open")) return;
+    const drawer = document.getElementById("cart_drawer");
+    if (drawer && drawer.classList.contains("open")) return;
     e.preventDefault();
     const linePx = 16;
     const pagePx = innerHeight * 0.9;
@@ -456,13 +460,20 @@ function renderCart() {
     const row = document.createElement("div");
     row.className = "cart-item";
     row.innerHTML = `
-      <span class="cart-item-name">${item.name}</span>
-      <span class="cart-item-price">€${item.price * item.qty}</span>
-      <span class="cart-item-meta">€${item.price} each</span>
-      <div class="cart-item-controls">
-        <button class="cart-qty-btn" data-action="minus" data-id="${id}">−</button>
-        <span class="cart-qty-num">${item.qty}</span>
-        <button class="cart-qty-btn" data-action="plus" data-id="${id}">+</button>
+      <div class="cart-item-top">
+        <div class="cart-item-info">
+          <span class="cart-item-name">${item.name}</span>
+          <span class="cart-item-meta">€${item.price} per bottle · 700 ml</span>
+        </div>
+        <button class="cart-item-remove" data-action="remove" data-id="${id}" aria-label="Remove">×</button>
+      </div>
+      <div class="cart-item-bottom">
+        <div class="cart-item-controls">
+          <button class="cart-qty-btn" data-action="minus" data-id="${id}">−</button>
+          <span class="cart-qty-num">${item.qty}</span>
+          <button class="cart-qty-btn" data-action="plus" data-id="${id}">+</button>
+        </div>
+        <span class="cart-item-price">€${item.price * item.qty}</span>
       </div>
     `;
     cartItemsEl.appendChild(row);
@@ -477,7 +488,7 @@ cartClose.addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
 
 cartItemsEl.addEventListener("click", (e) => {
-  const btn = e.target.closest(".cart-qty-btn");
+  const btn = e.target.closest("[data-action]");
   if (!btn) return;
 
   const id = btn.dataset.id;
@@ -488,6 +499,8 @@ cartItemsEl.addEventListener("click", (e) => {
   } else if (action === "minus") {
     cart[id].qty--;
     if (cart[id].qty <= 0) delete cart[id];
+  } else if (action === "remove") {
+    delete cart[id];
   }
 
   updateCartCount();
@@ -502,7 +515,20 @@ const checkoutSummary = document.getElementById("checkout_summary");
 const checkoutTotal = document.getElementById("checkout_total");
 const checkoutForm = document.getElementById("checkout_form");
 const cardFieldset = document.getElementById("card_fieldset");
+const codNotice = document.getElementById("cod_notice");
+const checkoutSubmitBtn = document.getElementById("checkout_submit");
 let paymentMethod = "cod";
+
+function applyPaymentMethod() {
+  const isCard = paymentMethod === "card";
+  cardFieldset.hidden = !isCard;
+  codNotice.hidden = isCard;
+  cardFieldset.querySelectorAll("input").forEach((inp) => {
+    inp.required = isCard;
+  });
+  checkoutSubmitBtn.textContent = isCard ? "Pay Now" : "Place Order";
+  checkoutSubmitBtn.style.background = isCard ? "#5c8ee6" : "";
+}
 
 function openCheckout() {
   const items = Object.entries(cart);
@@ -521,10 +547,7 @@ function openCheckout() {
   const total = items.reduce((s, [, i]) => s + i.price * i.qty, 0);
   checkoutTotal.textContent = `€${total}`;
 
-  cardFieldset.hidden = paymentMethod !== "card";
-  cardFieldset.querySelectorAll("input").forEach((inp) => {
-    inp.required = paymentMethod === "card";
-  });
+  applyPaymentMethod();
 
   closeCart();
   checkoutOverlay.classList.add("open");
@@ -543,12 +566,7 @@ document.querySelectorAll(".method-btn").forEach((btn) => {
     document.querySelectorAll(".method-btn").forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
     paymentMethod = btn.dataset.method;
-
-    const isCard = paymentMethod === "card";
-    cardFieldset.hidden = !isCard;
-    cardFieldset.querySelectorAll("input").forEach((inp) => {
-      inp.required = isCard;
-    });
+    applyPaymentMethod();
   });
 });
 
